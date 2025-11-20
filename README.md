@@ -1,66 +1,33 @@
-# ifc data bus
+# IFC data bus v0.2
 
-This is a challenge of the **AEC Hackathon – Zurich Edition 2025**.
+## The Challenge
 
-## Challenge
+**IFC data bus 0.2** is a challenge of the **AEC/O Hackathon 2025 – Munich Edition**.
+<a href="ifc-data-bus challenge Munich.pdf">The Challenge Presentation (.pdf)</a>
 
-Architects and planners rely on various software tools. But, **poor data integration across tools creates bottlenecks** in the design process, hindering holistic project optimization.
+## Problem Statement
 
-OpenBIM currently lacks technologies for bi-directional data exchange, **particularly re-integrating data into CAD | CDE** is a challenge.
+Architects and planners rely on a broad ecosystem of software tools, yet **poor data integration between these tools creates major bottlenecks** in the design process. This fragmentation prevents holistic project optimization and slows down coordination. Although OpenBIM aims to support interoperability, it still lacks robust mechanisms for **bi-directional data exchange**—particularly when it comes to **re-integrating data into CAD and CDE environments**. Existing initiatives often do not prioritize full OpenBIM compliance, leaving a clear opportunity for alternative, standards-aligned solutions.
 
-<img width="752" alt="image" src="https://github.com/user-attachments/assets/e5cadcd2-e32d-4324-bbe7-cfdef36df0f8" />
+At the same time, the emerging **modularized and layerized IFC5** standard introduces new capabilities for more flexible, fine-grained, and machine-friendly data handling. These advances open the door to new workflows built around decentralized, event-driven data exchange rather than monolithic file transfers.
 
-Limitations include: No near real-time data transfer or linking of data. Tracking of individual data fields is not possible. Authors for data fields cannot be assigned. Errors in the process due to manual transfer of information. And many other inefficiencies...
+## Goal
 
-Since initiatives, such as Speckle, do not prioritize OpenBIM compliance, there is an opportunity to explore alternative approaches.
+Develop a proof-of-concept for an **IFC Data Bus** that demonstrates decentralized data synchronization using **IFC5**, **MQTT**, and **IDS**, leveraging the **modularity and layered structure of IFC5** to enable more scalable and targeted data flows.  
 
-## Envisioned workflow
+The system should consist of **four interoperating components** that **publish, process, and read model data** across the data bus.  
 
-We envision a workflow with **publish-and-subscribe semantics**, built upon the **openBIM** standards IFC, IDS, bSDD to propagate model changes such as **buildups & materials** across an ecosystem of tools.
+The entire solution should be delivered as an easy-to-run **docker-compose** setup and published on GitHub for straightforward adoption.
 
-<img width="732" alt="image" src="https://github.com/user-attachments/assets/4b1fb25d-34a4-41ad-b7a7-5aa5b17ec788" />
+## Resources
 
-## Let's create together
-
-Let’s develop an openBIM-based **protocol** and a **proof of concept (PoC)** to exchange model updates in a distributed, bi-directional manner. The PoC will cover buildups, materials, classifications and/or building physics.
+All provided resources are from the **IFC 4x** world and require thoughtful adoption to IFC5.
 
 1. <a href="https://drive.google.com/file/d/1G6e2UCSyiQRj5Dxday6ytkK4VL-FCIHI/view?usp=sharing">Test IFC File</a>
-2. <a href="https://drive.google.com/file/d/1Jvl45mIuUTdylNRtNFpbycbY55Tbuuml/view?usp=sharing">Archicad PLA File</a>
-3. <a href="https://drive.google.com/file/d/1nhnUX_tlMNfOhmSC8T2DPsdUraAOrl_T/view?usp=sharing">Archicad PNL File</a>
-4. <a href="https://drive.google.com/file/d/1nZ7oDA_LomUrPMGUZTA1sYswZqczJIdt/view?usp=sharing">Sequence Diagram</a>
+2. <a href="https://github.com/vyzn-tech/ifc-data-bus/tree/main/poc/message">Message format</a>
 
 # Outcome
 
-## Overview
+...
 
-We managed to get **six clients** integrated on the PoC of the ifc data bus.
-
-![1743660945307](https://github.com/user-attachments/assets/45c42016-b326-4e89-b9eb-6d6a1947ccaf)
-
-## Demo
-
-Short demo video of the PoC (click to play):
-
-[![Watch the video](https://img.youtube.com/vi/StIqjEeKpnE/0.jpg)](https://www.youtube.com/watch?v=StIqjEeKpnE)
-
-## Artefacts
-
-- [ifcJSON Message Samples](https://github.com/Adrian62D/ifc-data-bus/tree/main/poc/message)
-- [Grasshopper Client](https://github.com/Adrian62D/ifc-data-bus/tree/main/poc/grasshopper-client)
-- [Web Client](https://github.com/Adrian62D/ifc-data-bus/tree/main/poc/web-client)
-- [Blender Client](https://github.com/Adrian62D/ifc-data-bus/tree/main/poc/blender-client)
-- [Archicad Client](https://github.com/Adrian62D/ifc-data-bus/tree/main/poc/archicad%20plugin)
-- [MQTT Client](https://github.com/Adrian62D/ifc-data-bus/tree/main/poc/mqtt-client)
-
-## Thanks! 
-
-We've won at the hackathon in the category best-mashup-project. Thanks for your support!
-
-# Next steps
-
-- [x] Pitch at Hackathon
-- [x] Pitch at BuildingSmart International
-- [ ] Alignment with IFC5
-- [ ] V0.1 of protocol
-
-
+## Thanks!
