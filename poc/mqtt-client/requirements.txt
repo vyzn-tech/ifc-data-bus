@@ -1,7 +1,0 @@
-# Development dependencies
-pytest
-black
-mypy
-
-# Install package in editable mode
--e .

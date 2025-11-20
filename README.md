@@ -3,6 +3,7 @@
 ## The Challenge
 
 **IFC data bus 0.2** is a challenge of the **AEC/O Hackathon 2025 – Munich Edition**.
+
 <a href="ifc-data-bus challenge Munich.pdf">The Challenge Presentation (.pdf)</a>
 
 ## Problem Statement
@@ -19,15 +20,15 @@ The system should consist of **four interoperating components** that **publish, 
 
 The entire solution should be delivered as an easy-to-run **docker-compose** setup and published on GitHub for straightforward adoption.
 
+Last but not least, IFC data bus needs a logo :)
+
 ## Resources
 
-All provided resources are from the **IFC 4x** world and require thoughtful adoption to IFC5.
+All provided resources are from the **IFC 4x world** and require thoughtful **adoption to IFC5**.
 
 1. <a href="https://drive.google.com/file/d/1G6e2UCSyiQRj5Dxday6ytkK4VL-FCIHI/view?usp=sharing">Test IFC File</a>
 2. <a href="https://github.com/vyzn-tech/ifc-data-bus/tree/main/poc/message">Message format</a>
 
 # Outcome
 
-...
-
-## Thanks!
+**TODO**
