@@ -1,0 +1,38 @@
+{
+  "ifcDataBusVersion": "0.2",
+  "messageType": "Model.Query",
+  "correlationId": "query-model-001",
+  "timestamp": "2025-11-21T11:00:00Z",
+
+  "sender": {
+    "systemId": "SystemD",
+    "systemType": "SustainabilityDashboard",
+    "userId": "sustainability.expert@example.com"
+  },
+
+  "security": {
+    "tokenHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "permissions": ["read:model"]
+  },
+
+  "target": {
+    "systemId": "SystemC",
+    "systemType": "IFCDataBus"
+  },
+
+  "modelRef": {
+    "ifcSchema": "IFC5",
+    "modelId": "bim-project-123",
+    "revision": 2
+  },
+
+  "payload": {
+    "queryType": "GetModel",
+    "requestedFields": [
+      "modelRef",
+      "payload.projectMeta",
+      "payload.extracts.spatialStructureRoot"
+    ]
+  }
+}
+

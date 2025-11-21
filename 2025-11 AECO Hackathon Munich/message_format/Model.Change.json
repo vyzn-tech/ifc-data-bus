@@ -2,6 +2,8 @@
   "ifcDataBusVersion": "0.2",
   "messageType": "Model.Change",
   "correlationId": "change-001",
+  "sequenceNumber": 2,
+  "previousSequenceNumber": 1,
   "timestamp": "2025-11-21T10:20:00Z",
 
   "sender": {
@@ -10,12 +12,21 @@
     "userId": "author@example.com"
   },
 
+  "security": {
+    "tokenHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "permissions": ["write:model"]
+  },
+
   "modelRef": {
     "ifcSchema": "IFC5",
     "modelId": "bim-project-123",
     "revision": 2,
     "baseRevision": 1,
-    "hash": "sha256:efgh5678..."
+    "hash": {
+      "algorithm": "sha256",
+      "value": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "hex"
+    }
   },
 
   "payload": {
@@ -23,7 +34,7 @@
     "operations": [
       {
         "op": "update",
-        "ifcGlobalId": "1a2b3c4d5e6f7g8h9i0j",
+        "path": "3v12fRbTX0hQxL6jLSEJxB",
         "entityType": "IfcWindow",
         "changedProperties": {
           "OverallHeight": { "old": 1.20, "new": 1.35 },
@@ -32,7 +43,7 @@
       },
       {
         "op": "add",
-        "ifcGlobalId": "NEW1234567890ABCDEF",
+        "path": "2Sr7Omf9PDSO3ApyXTfN5E",
         "entityType": "IfcWindow",
         "entityData": {
           "PredefinedType": "WINDOW",
@@ -42,7 +53,7 @@
       },
       {
         "op": "delete",
-        "ifcGlobalId": "OLD9876543210FEDCBA",
+        "path": "0zjkXZJ2HASRjAzAjathdh",
         "entityType": "IfcWindow"
       }
     ]

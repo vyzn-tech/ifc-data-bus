@@ -2,6 +2,8 @@
   "ifcDataBusVersion": "0.2",
   "messageType": "Model.Publish",
   "correlationId": "init-publish-001",
+  "sequenceNumber": 1,
+  "previousSequenceNumber": null,
   "timestamp": "2025-11-21T10:15:23Z",
 
   "sender": {
@@ -10,14 +12,23 @@
     "userId": "author@example.com"
   },
 
+  "security": {
+    "tokenHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "permissions": ["write:model"]
+  },
+
   "modelRef": {
     "ifcSchema": "IFC5",
     "modelId": "bim-project-123",
     "revision": 1,
-    "hash": "sha256:abcd1234...",
+    "hash": {
+      "algorithm": "sha256",
+      "value": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "hex"
+    },
     "storage": {
-      "kind": "url",
-      "location": "https://bim.example.com/models/bim-project-123/r1.ifc5"
+      "kind": "ifcx",
+      "location": "https://bim.example.com/models/bim-project-123/r1.ifcx"
     }
   },
 
@@ -28,7 +39,7 @@
       "client": "Muster AG"
     },
     "extracts": {
-      "spatialStructureRoot": "3fku2H35jCEuPjXyzABC1F"
+      "spatialStructureRoot": "ac966532-e0dd-40dc-90aa-51cda51c4730"
     }
   }
 }

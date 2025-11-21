@@ -1,0 +1,38 @@
+{
+  "ifcDataBusVersion": "0.2",
+  "messageType": "de.din.DIN_EN15978_2012_10.QueryResponse.LcaResults",
+  "correlationId": "query-lca-001",
+  "timestamp": "2025-11-21T11:15:05Z",
+
+  "sender": {
+    "systemId": "SystemC",
+    "systemType": "IFCDataBus"
+  },
+
+  "respondsTo": {
+    "systemId": "SystemD",
+    "systemType": "SustainabilityDashboard",
+    "correlationId": "query-lca-001"
+  },
+
+  "modelRef": {
+    "ifcSchema": "IFC5",
+    "modelId": "bim-project-123",
+    "revision": 2
+  },
+
+  "payload": {
+    "queryType": "GetLcaResults",
+    "status": "error",
+    "error": {
+      "code": "LCA_RESULTS_NOT_FOUND",
+      "message": "LCA results for analysis 'LCA-Building-001' not found",
+      "details": {
+        "analysisId": "LCA-Building-001",
+        "modelId": "bim-project-123",
+        "revision": 2
+      }
+    }
+  }
+}
+

@@ -1,0 +1,47 @@
+{
+  "ifcDataBusVersion": "0.2",
+  "messageType": "Model.QueryResponse",
+  "correlationId": "query-model-001",
+  "timestamp": "2025-11-21T11:00:05Z",
+
+  "sender": {
+    "systemId": "SystemC",
+    "systemType": "IFCDataBus"
+  },
+
+  "respondsTo": {
+    "systemId": "SystemD",
+    "systemType": "SustainabilityDashboard",
+    "correlationId": "query-model-001"
+  },
+
+  "modelRef": {
+    "ifcSchema": "IFC5",
+    "modelId": "bim-project-123",
+    "revision": 2,
+    "hash": {
+      "algorithm": "sha256",
+      "value": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "hex"
+    },
+    "storage": {
+      "kind": "ifcx",
+      "location": "https://bim.example.com/models/bim-project-123/r2.ifcx"
+    }
+  },
+
+  "payload": {
+    "queryType": "GetModel",
+    "status": "success",
+    "data": {
+      "projectMeta": {
+        "projectName": "Wohnhaus Zürich",
+        "client": "Muster AG"
+      },
+      "extracts": {
+        "spatialStructureRoot": "ac966532-e0dd-40dc-90aa-51cda51c4730"
+      }
+    }
+  }
+}
+

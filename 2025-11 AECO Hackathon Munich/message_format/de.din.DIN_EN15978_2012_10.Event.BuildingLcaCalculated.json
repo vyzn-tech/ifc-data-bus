@@ -2,6 +2,8 @@
   "ifcDataBusVersion": "0.2",
   "messageType": "de.din.DIN_EN15978_2012_10.Event.BuildingLcaCalculated",
   "correlationId": "LCA-2025-001",
+  "sequenceNumber": 101,
+  "previousSequenceNumber": 100,
   "timestamp": "2025-11-21T10:45:00Z",
 
   "sender": {
@@ -9,11 +11,20 @@
     "systemType": "LCAService"
   },
 
+  "security": {
+    "tokenHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "permissions": ["read:model", "write:lca"]
+  },
+
   "modelRef": {
     "ifcSchema": "IFC5",
     "modelId": "bim-project-123",
     "revision": 2,
-    "hash": "sha256:efgh5678..."
+    "hash": {
+      "algorithm": "sha256",
+      "value": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "hex"
+    }
   },
 
   "payload": {
@@ -34,7 +45,7 @@
     "impacts": {
       "perBuilding": [
         {
-          "buildingId": "3fku2H35jCEuPjXyzABC1F",
+          "path": "3Dz9w4Uer6ovnbK9EAPYN",
           "gfa": { "value": 4500, "unit": "m²" },
           "results": [
             { "impactCategory": "GWP_total", "value": 1200000, "unit": "kgCO2e" },

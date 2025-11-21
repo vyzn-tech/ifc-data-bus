@@ -1,0 +1,38 @@
+{
+  "ifcDataBusVersion": "0.2",
+  "messageType": "Model.QueryResponse",
+  "correlationId": "query-model-001",
+  "timestamp": "2025-11-21T11:00:05Z",
+
+  "sender": {
+    "systemId": "SystemC",
+    "systemType": "IFCDataBus"
+  },
+
+  "respondsTo": {
+    "systemId": "SystemD",
+    "systemType": "SustainabilityDashboard",
+    "correlationId": "query-model-001"
+  },
+
+  "modelRef": {
+    "ifcSchema": "IFC5",
+    "modelId": "bim-project-123",
+    "revision": 2
+  },
+
+  "payload": {
+    "queryType": "GetModel",
+    "status": "error",
+    "error": {
+      "code": "MODEL_NOT_FOUND",
+      "message": "Model 'bim-project-123' revision 2 not found",
+      "details": {
+        "modelId": "bim-project-123",
+        "revision": 2,
+        "availableRevisions": [1]
+      }
+    }
+  }
+}
+

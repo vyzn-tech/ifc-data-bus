@@ -2,12 +2,18 @@
   "ifcDataBusVersion": "0.2",
   "messageType": "de.din.DIN_EN15978_2012_10.Command.CalculateBuildingLca",
   "correlationId": "LCA-2025-001",
+  "idempotencyKey": "cmd-lca-2025-001-systemd-20251121-103000",
   "timestamp": "2025-11-21T10:30:00Z",
 
   "sender": {
     "systemId": "SystemD",
     "systemType": "SustainabilityDashboard",
     "userId": "sustainability.expert@example.com"
+  },
+
+  "security": {
+    "tokenHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "permissions": ["read:model", "write:lca"]
   },
 
   "target": {
@@ -19,7 +25,11 @@
     "ifcSchema": "IFC5",
     "modelId": "bim-project-123",
     "revision": 2,
-    "hash": "sha256:efgh5678..."
+    "hash": {
+      "algorithm": "sha256",
+      "value": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "hex"
+    }
   },
 
   "payload": {

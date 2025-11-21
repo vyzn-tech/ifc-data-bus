@@ -1,0 +1,39 @@
+{
+  "ifcDataBusVersion": "0.2",
+  "messageType": "de.din.DIN_EN15978_2012_10.Query.GetLcaResults",
+  "correlationId": "query-lca-001",
+  "timestamp": "2025-11-21T11:15:00Z",
+
+  "sender": {
+    "systemId": "SystemD",
+    "systemType": "SustainabilityDashboard",
+    "userId": "sustainability.expert@example.com"
+  },
+
+  "security": {
+    "tokenHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "permissions": ["read:lca"]
+  },
+
+  "target": {
+    "systemId": "SystemC",
+    "systemType": "IFCDataBus"
+  },
+
+  "payload": {
+    "queryType": "GetLcaResults",
+    "filters": {
+      "analysisId": "LCA-Building-001",
+      "modelRef": {
+        "modelId": "bim-project-123",
+        "revision": 2
+      },
+      "buildingPath": "3Dz9w4Uer6ovnbK9EAPYN"
+    },
+    "requestedFields": [
+      "impacts.perBuilding.results",
+      "calculationMeta"
+    ]
+  }
+}
+
