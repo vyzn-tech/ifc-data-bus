@@ -58,14 +58,11 @@
     },
 
     "resultDetail": {
-      "aggregationLevel": ["PerBuilding", "PerStorey", "PerElement"],
-      "groupBy": ["IfcEntityType", "Material", "Zone"],
-      "returnUnit": "kgCO2e"
+      "aggregationLevel": ["PerBuilding"]
     },
 
     "constraints": {
-      "requiredStandard": "DIN EN 15978:2012-10",
-      "rejectIfDifferentStandard": true
+      "requiredStandard": "DIN EN 15978:2012-10"
     }
   }
 }
