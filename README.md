@@ -14,9 +14,9 @@ At the same time, the emerging **modularized and layerized IFC5** standard intro
 
 ## Goal
 
-- Solve the hard problem of conflict resolution by leveraging IFC5
-- Learn about IFC5 and event-driven systems
-- Publish an awesome Demo!:)
+- <span style="color:#1e88e5; font-weight:bold;">Solve the hard problem of conflict resolution by leveraging IFC5</span>
+- <span style="color:#1e88e5; font-weight:bold;">Learn about IFC5 and event-driven systems</span>
+- <span style="color:#1e88e5; font-weight:bold;">Publish an awesome Demo! :)</span>
 
 In detail:
 
