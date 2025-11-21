@@ -33,7 +33,7 @@ Last but not least, IFC data bus needs a logo :)
 1. Sample Building Model
    - [esempio_01 edificius.ifcx](https://github.com/buildingSMART/IFC5-development/blob/main/examples/ACCA%20Building/esempio_01%20edificius.ifcx)
 2. IFC5
-   - IFC5 in a nutshell [Part I](https://www.linkedin.com/posts/activity-7393592270874222592-OPPl?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAd2x9YBy8m6RCcQ4ke1OqtpscR8ahH46RQ) / [Part II](https://www.linkedin.com/posts/activity-7393592270874222592-OPPl?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAd2x9YBy8m6RCcQ4ke1OqtpscR8ahH46RQ) 
+   - IFC5 in a nutshell [Part I](https://www.linkedin.com/posts/activity-7393592270874222592-OPPl?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAd2x9YBy8m6RCcQ4ke1OqtpscR8ahH46RQ) / [Part II](https://www.linkedin.com/posts/activity-7395054411556741121-gItH?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAd2x9YBy8m6RCcQ4ke1OqtpscR8ahH46RQ) 
    - [IFC5 Viewer](https://ifc5.technical.buildingsmart.org/viewer/)
    - [IFC5 Repository](https://github.com/buildingSMART/IFC5-development)
    - [IFC5 Course](https://learn.ifcx.dev/products/courses/master-ifc-5-course)
