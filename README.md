@@ -30,9 +30,16 @@ Last but not least, IFC data bus needs a logo :)
 
 ## Resources
 
-1. <a href="https://drive.google.com/file/d/1G6e2UCSyiQRj5Dxday6ytkK4VL-FCIHI/view?usp=sharing">Test IFC File</a> (requires IFC5 conversion)
-2. [MQTT docker container](2025-11%20AECO%20Hackathon%20Munich/mqtt/)
-3. Message Flow
+1. Sample Building Model
+   - [esempio_01 edificius.ifcx](https://github.com/buildingSMART/IFC5-development/blob/main/examples/ACCA%20Building/esempio_01%20edificius.ifcx)
+2. IFC5
+   - IFC5 in a nutshell [Part I](https://www.linkedin.com/posts/activity-7393592270874222592-OPPl?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAd2x9YBy8m6RCcQ4ke1OqtpscR8ahH46RQ) / [Part II](https://www.linkedin.com/posts/activity-7393592270874222592-OPPl?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAd2x9YBy8m6RCcQ4ke1OqtpscR8ahH46RQ) 
+   - [IFC5 Viewer](https://ifc5.technical.buildingsmart.org/viewer/)
+   - [IFC5 Repository](https://github.com/buildingSMART/IFC5-development)
+   - [IFC5 Course](https://learn.ifcx.dev/products/courses/master-ifc-5-course)
+3. Messaging Bus
+   - [NanoMQ docker container](2025-11%20AECO%20Hackathon%20Munich/mqtt/)
+4. Starting point for a message flow, utilizing _Command_, _Event_ and _Query_ message types
 
 ```mermaid
 sequenceDiagram
@@ -52,23 +59,22 @@ sequenceDiagram
     C-->>D: Model.Change
 
     %% c) System D sends LCA command (no direct response expected)
-    D->>C: DIN-EN-15978:2012-10.CalculateBuildingLca.Command<br/>correlationId=LCA-2025-001
-    C-->>B: DIN-EN-15978:2012-10.CalculateBuildingLca.Command
+    D->>C: de.din.DIN_EN15978_2012_10.Command.CalculateBuildingLca<br/>correlationId=LCA-2025-001
+    C-->>B: de.din.DIN_EN15978_2012_10.Command.CalculateBuildingLca
 
     %% d) System B performs LCA based on command
     activate B
     B->>B: Perform LCA Calculation<br/>using IFC5 model (revision 2)
     
     %% e) System B publishes result as event (event-carried state)
-    B-->>C: DIN-EN-15978:2012-10.BuildingLcaCalculated.Event<br/>correlationId=LCA-2025-001
+    B-->>C: de.din.DIN_EN15978_2012_10.Event.BuildingLcaCalculated<br/>correlationId=LCA-2025-001
     deactivate B
 
     %% f) System D consumes event and updates its read model
-    C-->>D: DIN-EN-15978:2012-10.BuildingLcaCalculated.Event<br/>correlationId=LCA-2025-001
+    C-->>D: de.din.DIN_EN15978_2012_10.Event.BuildingLcaCalculated<br/>correlationId=LCA-2025-001
     D->>D: Update local LCA view<br/>Visualize in Sustainability Dashboard
-
 
 ```
 
-4. [Message Format](2025-11%20AECO%20Hackathon%20Munich/message_format/) (our starting point, requires thoughtful adoption to IFC5)
-5. IDS files
+5. Starting point for message format 
+   - [Message Format](2025-11%20AECO%20Hackathon%20Munich/message_format/)

@@ -1,6 +1,6 @@
 {
-  "ifcMessageVersion": "0.1",
-  "messageType": "DIN-EN-15978:2012-10.CalculateBuildingLca.Command",
+  "ifcDataBusVersion": "0.2",
+  "messageType": "de.din.DIN_EN15978_2012_10.Command.CalculateBuildingLca",
   "correlationId": "LCA-2025-001",
   "timestamp": "2025-11-21T10:30:00Z",
 

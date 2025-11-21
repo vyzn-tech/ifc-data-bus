@@ -1,12 +1,13 @@
 {
-  "ifcMessageVersion": "0.1",
+  "ifcDataBusVersion": "0.2",
   "messageType": "Model.Change",
   "correlationId": "change-001",
   "timestamp": "2025-11-21T10:20:00Z",
 
   "sender": {
     "systemId": "SystemA",
-    "systemType": "AuthoringTool"
+    "systemType": "AuthoringTool",
+    "userId": "author@example.com"
   },
 
   "modelRef": {

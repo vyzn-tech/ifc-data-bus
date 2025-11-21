@@ -1,5 +1,5 @@
 {
-  "ifcMessageVersion": "0.1",
+  "ifcDataBusVersion": "0.2",
   "messageType": "Model.Publish",
   "correlationId": "init-publish-001",
   "timestamp": "2025-11-21T10:15:23Z",
