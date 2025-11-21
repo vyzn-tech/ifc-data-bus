@@ -31,10 +31,8 @@ Last but not least, IFC data bus needs a logo :)
 ## Resources
 
 1. <a href="https://drive.google.com/file/d/1G6e2UCSyiQRj5Dxday6ytkK4VL-FCIHI/view?usp=sharing">Test IFC File</a> (requires IFC5 conversion)
-2. [Message Format](2025-11%20AECO%20Hackathon%20Munich/message_format/) (our starting point, requires thoughtful adoption to IFC5)
-3. [MQTT docker container](2025-11%20AECO%20Hackathon%20Munich/mqtt/)
-
-4. Message Flow:
+2. [MQTT docker container](2025-11%20AECO%20Hackathon%20Munich/mqtt/)
+3. Message Flow
 
 ```mermaid
 sequenceDiagram
@@ -72,3 +70,5 @@ sequenceDiagram
 
 ```
 
+4. [Message Format](2025-11%20AECO%20Hackathon%20Munich/message_format/) (our starting point, requires thoughtful adoption to IFC5)
+5. IDS files
