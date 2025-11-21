@@ -30,11 +30,11 @@ Last but not least, IFC data bus needs a logo :)
 
 ## Resources
 
-All provided resources are from the **IFC 4x world** and require thoughtful **adoption to IFC5**.
+1. <a href="https://drive.google.com/file/d/1G6e2UCSyiQRj5Dxday6ytkK4VL-FCIHI/view?usp=sharing">Test IFC File</a> (requires IFC5 conversion)
+2. [Message Format](2025-11%20AECO%20Hackathon%20Munich/message_format/) (our starting point, requires thoughtful adoption to IFC5)
+3. [MQTT docker container](2025-11%20AECO%20Hackathon%20Munich/mqtt/)
 
-1. <a href="https://drive.google.com/file/d/1G6e2UCSyiQRj5Dxday6ytkK4VL-FCIHI/view?usp=sharing">Test IFC File</a>
-2. <a href="https://github.com/vyzn-tech/ifc-data-bus/tree/main/poc/message">Message format</a>
-3. Message Flow:
+4. Message Flow:
 
 ```mermaid
 sequenceDiagram
@@ -71,3 +71,4 @@ sequenceDiagram
 
 
 ```
+

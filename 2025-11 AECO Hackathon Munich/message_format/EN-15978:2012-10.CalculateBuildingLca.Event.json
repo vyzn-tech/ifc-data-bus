@@ -41,31 +41,6 @@
             { "impactCategory": "AP", "value": 5000, "unit": "kgSO2eq" }
           ]
         }
-      ],
-
-      "perStorey": [
-        {
-          "storeyId": "0Zk12H35jCEuPjXyzABCD2",
-          "name": "EG",
-          "results": [
-            { "impactCategory": "GWP_total", "value": 300000, "unit": "kgCO2e" }
-          ]
-        }
-      ],
-
-      "perElement": [
-        {
-          "ifcGlobalId": "1a2b3c4d5e6f7g8h9i0j",
-          "entityType": "IfcWindow",
-          "quantity": { "unit": "m²", "value": 1.35 },
-          "results": [
-            { "impactCategory": "GWP_total", "value": 120, "unit": "kgCO2e" }
-          ],
-          "dataOrigin": {
-            "datasetId": "ECI:WINDOW-ALU-TRIPLE",
-            "scenario": "CH-2025-standard"
-          }
-        }
       ]
     }
   }
