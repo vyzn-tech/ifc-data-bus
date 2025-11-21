@@ -1,0 +1,34 @@
+{
+  "ifcMessageVersion": "0.1",
+  "messageType": "Model.Publish",
+  "correlationId": "init-publish-001",
+  "timestamp": "2025-11-21T10:15:23Z",
+
+  "sender": {
+    "systemId": "SystemA",
+    "systemType": "AuthoringTool",
+    "userId": "alice@example.com"
+  },
+
+  "modelRef": {
+    "ifcSchema": "IFC5",
+    "modelId": "bim-project-123",
+    "revision": 1,
+    "hash": "sha256:abcd1234...",
+    "storage": {
+      "kind": "url",
+      "location": "https://bim.example.com/models/bim-project-123/r1.ifc5"
+    }
+  },
+
+  "payload": {
+    "description": "Initiales Modell für Projekt X",
+    "projectMeta": {
+      "projectName": "Wohnhaus Zürich",
+      "client": "Muster AG"
+    },
+    "extracts": {
+      "spatialStructureRoot": "3fku2H35jCEuPjXyzABC1F"
+    }
+  }
+}

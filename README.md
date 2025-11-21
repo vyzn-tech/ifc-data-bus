@@ -28,7 +28,33 @@ All provided resources are from the **IFC 4x world** and require thoughtful **ad
 
 1. <a href="https://drive.google.com/file/d/1G6e2UCSyiQRj5Dxday6ytkK4VL-FCIHI/view?usp=sharing">Test IFC File</a>
 2. <a href="https://github.com/vyzn-tech/ifc-data-bus/tree/main/poc/message">Message format</a>
+3. Message Flow:
 
-# Outcome
+```mermaid
+sequenceDiagram
+    participant A as System A<br/>(AuthoringTool)
+    participant B as System B<br/>(CoordinationPlatform)
+    participant C as System C<br/>(LCAService)
+    participant D as System D<br/>(Viewer/UI)
+    participant Bus as Message Bus / Topic<br/>(IFC5-Message Layer)
 
-**TODO**
+    A->>Bus: Model.Publish<br/>correlationId=init-publish-001<br/>revision=1
+    Bus-->>B: Model.Publish
+    Bus-->>C: Model.Publish
+    Bus-->>D: Model.Publish
+
+    A->>Bus: Model.Change<br/>correlationId=change-001<br/>revision=2
+    Bus-->>B: Model.Change
+    Bus-->>C: Model.Change
+    Bus-->>D: Model.Change
+
+    B->>Bus: Analysis.LCA.Request<br/>correlationId=LCA-request-001<br/>standard=DIN EN 15978:2012-10
+    Bus-->>C: Analysis.LCA.Request
+
+    C->>C: Perform LCA Calculation
+    C-->>Bus: Analysis.LCA.Result<br/>correlationId=LCA-request-001
+    Bus-->>D: Analysis.LCA.Result
+
+    D->>D: Combine model + results<br/>Visualize output
+
+```

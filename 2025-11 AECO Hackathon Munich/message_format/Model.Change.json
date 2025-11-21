@@ -1,0 +1,49 @@
+{
+  "ifcMessageVersion": "0.1",
+  "messageType": "Model.Change",
+  "correlationId": "change-001",
+  "timestamp": "2025-11-21T10:20:00Z",
+
+  "sender": {
+    "systemId": "SystemA",
+    "systemType": "AuthoringTool"
+  },
+
+  "modelRef": {
+    "ifcSchema": "IFC5",
+    "modelId": "bim-project-123",
+    "revision": 2,
+    "baseRevision": 1,
+    "hash": "sha256:efgh5678..."
+  },
+
+  "payload": {
+    "changeDescription": "Fenster in Fassade Süd angepasst",
+    "operations": [
+      {
+        "op": "update",
+        "ifcGlobalId": "1a2b3c4d5e6f7g8h9i0j",
+        "entityType": "IfcWindow",
+        "changedProperties": {
+          "OverallHeight": { "old": 1.20, "new": 1.35 },
+          "OverallWidth":  { "old": 0.90, "new": 1.00 }
+        }
+      },
+      {
+        "op": "add",
+        "ifcGlobalId": "NEW1234567890ABCDEF",
+        "entityType": "IfcWindow",
+        "entityData": {
+          "PredefinedType": "WINDOW",
+          "OverallHeight": 1.35,
+          "OverallWidth": 1.00
+        }
+      },
+      {
+        "op": "delete",
+        "ifcGlobalId": "OLD9876543210FEDCBA",
+        "entityType": "IfcWindow"
+      }
+    ]
+  }
+}

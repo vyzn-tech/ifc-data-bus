@@ -1,0 +1,75 @@
+{
+  "ifcMessageVersion": "0.1",
+  "messageType": "EN-15978:2012-10",
+  "correlationId": "LCA-request-001",
+  "timestamp": "2025-11-21T10:45:00Z",
+
+  "sender": {
+    "systemId": "SystemC",
+    "systemType": "LCAService"
+  },
+
+  "modelRef": {
+    "ifcSchema": "IFC5",
+    "modelId": "bim-project-123",
+    "revision": 2,
+    "hash": "sha256:efgh5678..."
+  },
+
+  "payload": {
+    "analysisId": "LCA-Building-001",
+    "status": "completed",
+
+    "calculationMeta": {
+      "startedAt": "2025-11-21T10:30:05Z",
+      "finishedAt": "2025-11-21T10:44:30Z",
+      "lciaMethod": {
+        "standard": "DIN EN 15978:2012-10",
+        "dataSource": "ecoinvent-3.9.1",
+        "version": "1.0"
+      },
+      "software": {
+        "name": "ExampleLCAEngine",
+        "version": "2.3.1"
+      }
+    },
+
+    "impacts": {
+      "perBuilding": [
+        {
+          "buildingId": "3fku2H35jCEuPjXyzABC1F",
+          "gfa": { "value": 4500, "unit": "m²" },
+          "results": [
+            { "impactCategory": "GWP_total", "value": 1200000, "unit": "kgCO2e" },
+            { "impactCategory": "AP", "value": 5000, "unit": "kgSO2eq" }
+          ]
+        }
+      ],
+
+      "perStorey": [
+        {
+          "storeyId": "0Zk12H35jCEuPjXyzABCD2",
+          "name": "EG",
+          "results": [
+            { "impactCategory": "GWP_total", "value": 300000, "unit": "kgCO2e" }
+          ]
+        }
+      ],
+
+      "perElement": [
+        {
+          "ifcGlobalId": "1a2b3c4d5e6f7g8h9i0j",
+          "entityType": "IfcWindow",
+          "quantity": { "unit": "m²", "value": 1.35 },
+          "results": [
+            { "impactCategory": "GWP_total", "value": 120, "unit": "kgCO2e" }
+          ],
+          "dataOrigin": {
+            "datasetId": "ECI:WINDOW-ALU-TRIPLE",
+            "scenario": "CH-2025-standard"
+          }
+        }
+      ]
+    }
+  }
+}
