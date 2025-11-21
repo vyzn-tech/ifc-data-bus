@@ -15,11 +15,6 @@
     "permissions": ["read:model"]
   },
 
-  "target": {
-    "systemId": "SystemC",
-    "systemType": "IFCDataBus"
-  },
-
   "modelRef": {
     "ifcSchema": "IFC5",
     "modelId": "bim-project-123",

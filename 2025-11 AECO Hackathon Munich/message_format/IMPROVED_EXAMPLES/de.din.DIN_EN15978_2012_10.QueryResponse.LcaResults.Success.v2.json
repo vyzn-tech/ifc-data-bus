@@ -1,0 +1,215 @@
+{
+  "messageSchemaVersion": "2.0",
+  "ifcDataBusVersion": "0.2",
+  
+  "messageType": "de.din.DIN_EN15978_2012_10.QueryResponse.LcaResults",
+  "messageId": "msg-20251121-111510-jkl012",
+  "correlationId": "query-lca-002",
+  "idempotencyKey": "query-response-lca-002-systemc-20251121-111510",
+  
+  "sequenceNumber": 53,
+  "previousSequenceNumber": 52,
+  
+  "timestamp": "2025-11-21T11:15:10Z",
+  "priority": 5,
+  
+  "sender": {
+    "systemId": "SystemC",
+    "systemType": "IFCDataBus",
+    "version": "0.2.0"
+  },
+  
+  "routing": {
+    "publishedOn": "ifc-data-bus/reply/SystemD/query-lca-002",
+    "replyTo": null,
+    "ttl": 300
+  },
+  
+  "respondsTo": {
+    "systemId": "SystemD",
+    "systemType": "SustainabilityDashboard",
+    "correlationId": "query-lca-002",
+    "messageId": "msg-20251121-111509-uvw456"
+  },
+  
+  "tracing": {
+    "traceId": "8be9f0a1b2c3d4e5f6a7b8c9d0e1f2a3",
+    "spanId": "d4e5f6a7b8c9d0e1",
+    "parentSpanId": "c3d4e5f6a7b8c9d0"
+  },
+  
+  "modelRef": {
+    "ifcSchema": "IFC5",
+    "modelId": "bim-project-123",
+    "revision": 2,
+    "hash": {
+      "algorithm": "sha256",
+      "value": "d2f8a3b1c9e4d5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0",
+      "encoding": "hex"
+    }
+  },
+  
+  "payload": {
+    "queryType": "GetLcaResults",
+    "status": "success",
+    "pagination": {
+      "page": 1,
+      "pageSize": 100,
+      "totalItems": 1,
+      "totalPages": 1,
+      "hasMore": false
+    },
+    "data": {
+      "analysisId": "LCA-Building-001",
+      "standard": "DIN EN 15978:2012-10",
+      "calculationMeta": {
+        "startedAt": "2025-11-21T10:30:05Z",
+        "finishedAt": "2025-11-21T10:44:30Z",
+        "duration": 865,
+        "dataSource": "ecoinvent-3.9.1",
+        "dataSourceVersion": "3.9.1",
+        "software": {
+          "name": "ExampleLCAEngine",
+          "version": "2.3.1",
+          "vendor": "Example Corp"
+        },
+        "qualityIndicators": {
+          "dataQuality": "good",
+          "completeness": 0.95,
+          "confidence": 0.90
+        }
+      },
+      "impacts": {
+        "perBuilding": [
+          {
+            "path": "3Dz9w4Uer6ovnbK9EAPYN",
+            "pathType": "IFC_GUID",
+            "entityType": "IfcBuilding",
+            "gfa": { "value": 4500, "unit": "m²" },
+            "results": [
+              {
+                "impactCategory": "GWP_total",
+                "name": "Global Warming Potential",
+                "value": 1200000,
+                "unit": "kgCO2e",
+                "normalizedPerGFA": 266.67
+              },
+              {
+                "impactCategory": "AP",
+                "name": "Acidification Potential",
+                "value": 5000,
+                "unit": "kgSO2eq",
+                "normalizedPerGFA": 1.11
+              },
+              {
+                "impactCategory": "EP",
+                "name": "Eutrophication Potential",
+                "value": 800,
+                "unit": "kgPO4eq",
+                "normalizedPerGFA": 0.18
+              },
+              {
+                "impactCategory": "ODP",
+                "name": "Ozone Depletion Potential",
+                "value": 0.15,
+                "unit": "kgCFC-11eq",
+                "normalizedPerGFA": 0.000033
+              },
+              {
+                "impactCategory": "POCP",
+                "name": "Photochemical Ozone Creation Potential",
+                "value": 450,
+                "unit": "kgC2H4eq",
+                "normalizedPerGFA": 0.10
+              }
+            ],
+            "breakdown": {
+              "byLifeCycleModule": [
+                {
+                  "module": "A1-A3",
+                  "name": "Product Stage",
+                  "GWP_total": 720000,
+                  "percentage": 60.0
+                },
+                {
+                  "module": "A4",
+                  "name": "Transport",
+                  "GWP_total": 120000,
+                  "percentage": 10.0
+                },
+                {
+                  "module": "A5",
+                  "name": "Construction",
+                  "GWP_total": 180000,
+                  "percentage": 15.0
+                },
+                {
+                  "module": "B4",
+                  "name": "Replacement",
+                  "GWP_total": 120000,
+                  "percentage": 10.0
+                },
+                {
+                  "module": "C3-C4",
+                  "name": "End of Life",
+                  "GWP_total": 60000,
+                  "percentage": 5.0
+                }
+              ],
+              "byElementType": [
+                {
+                  "elementType": "IfcWall",
+                  "count": 45,
+                  "GWP_total": 600000,
+                  "percentage": 50.0
+                },
+                {
+                  "elementType": "IfcSlab",
+                  "count": 12,
+                  "GWP_total": 480000,
+                  "percentage": 40.0
+                },
+                {
+                  "elementType": "IfcWindow",
+                  "count": 78,
+                  "GWP_total": 72000,
+                  "percentage": 6.0
+                },
+                {
+                  "elementType": "IfcDoor",
+                  "count": 24,
+                  "GWP_total": 48000,
+                  "percentage": 4.0
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "benchmarks": {
+        "gwpPerM2": {
+          "value": 266.67,
+          "unit": "kgCO2e/m²",
+          "benchmarkType": "DIN EN 15978",
+          "rating": "B",
+          "ratings": [
+            { "rating": "A+", "threshold": 0, "max": 150 },
+            { "rating": "A", "threshold": 150, "max": 200 },
+            { "rating": "B", "threshold": 200, "max": 300 },
+            { "rating": "C", "threshold": 300, "max": 400 },
+            { "rating": "D", "threshold": 400, "max": null }
+          ]
+        }
+      },
+      "warnings": [
+        {
+          "code": "INCOMPLETE_MATERIAL_DATA",
+          "message": "5% of materials lack complete LCA data",
+          "affectedElements": 12,
+          "severity": "warning"
+        }
+      ]
+    }
+  }
+}
+

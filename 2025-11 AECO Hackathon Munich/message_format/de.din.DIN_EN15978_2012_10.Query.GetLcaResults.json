@@ -15,11 +15,6 @@
     "permissions": ["read:lca"]
   },
 
-  "target": {
-    "systemId": "SystemC",
-    "systemType": "IFCDataBus"
-  },
-
   "payload": {
     "queryType": "GetLcaResults",
     "filters": {

@@ -1,0 +1,80 @@
+{
+  "messageSchemaVersion": "2.0",
+  "ifcDataBusVersion": "0.2",
+  
+  "messageType": "de.din.DIN_EN15978_2012_10.QueryResponse.LcaResults",
+  "messageId": "msg-20251121-111505-ghi789",
+  "correlationId": "query-lca-001",
+  "idempotencyKey": "query-response-lca-001-systemc-20251121-111505",
+  
+  "sequenceNumber": 52,
+  "previousSequenceNumber": 51,
+  
+  "timestamp": "2025-11-21T11:15:05Z",
+  "priority": 5,
+  
+  "sender": {
+    "systemId": "SystemC",
+    "systemType": "IFCDataBus",
+    "version": "0.2.0"
+  },
+  
+  "routing": {
+    "publishedOn": "ifc-data-bus/reply/SystemD/query-lca-001",
+    "replyTo": null,
+    "ttl": 300
+  },
+  
+  "respondsTo": {
+    "systemId": "SystemD",
+    "systemType": "SustainabilityDashboard",
+    "correlationId": "query-lca-001",
+    "messageId": "msg-20251121-111500-xyz123"
+  },
+  
+  "tracing": {
+    "traceId": "7ad8e9f0a1b2c3d4e5f6a7b8c9d0e1f2",
+    "spanId": "c3d4e5f6a7b8c9d0",
+    "parentSpanId": "b2c3d4e5f6a7b8c9"
+  },
+  
+  "modelRef": {
+    "ifcSchema": "IFC5",
+    "modelId": "bim-project-123",
+    "revision": 2
+  },
+  
+  "payload": {
+    "queryType": "GetLcaResults",
+    "status": "error",
+    "error": {
+      "code": "LCA_RESULTS_NOT_FOUND",
+      "category": "NotFound",
+      "severity": "error",
+      "message": "LCA results for analysis 'LCA-Building-001' not found",
+      "userMessage": "The LCA calculation results you requested could not be found. The analysis may still be in progress or may have failed. Please check the status of your LCA calculation job.",
+      "details": {
+        "analysisId": "LCA-Building-001",
+        "modelId": "bim-project-123",
+        "revision": 2,
+        "possibleReasons": [
+          "Analysis not yet started",
+          "Analysis still in progress",
+          "Analysis failed during execution",
+          "Results expired (older than 7 days)"
+        ]
+      },
+      "retryable": true,
+      "retryAfter": 30,
+      "helpUrl": "https://docs.ifc-data-bus.org/errors/LCA_RESULTS_NOT_FOUND",
+      "errorId": "err-20251121-111505-abc789",
+      "suggestedActions": [
+        "Check if LCA calculation was triggered",
+        "Verify the analysis ID is correct",
+        "Wait for calculation to complete if in progress",
+        "Trigger a new calculation if needed"
+      ]
+    }
+  }
+}
+

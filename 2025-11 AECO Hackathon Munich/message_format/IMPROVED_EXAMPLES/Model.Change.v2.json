@@ -1,0 +1,94 @@
+{
+  "messageSchemaVersion": "2.0",
+  "ifcDataBusVersion": "0.2",
+  
+  "messageType": "Model.Change",
+  "messageId": "msg-20251121-102000-abc123",
+  "correlationId": "change-001",
+  "idempotencyKey": "change-2-bim-project-123-systemA-20251121-102000",
+  
+  "sequenceNumber": 2,
+  "previousSequenceNumber": 1,
+  
+  "timestamp": "2025-11-21T10:20:00Z",
+  "priority": 5,
+  
+  "sender": {
+    "systemId": "SystemA",
+    "systemType": "AuthoringTool",
+    "userId": "author@example.com",
+    "version": "1.2.3"
+  },
+  
+  "routing": {
+    "publishedOn": "ifc-data-bus/model/bim-project-123/change",
+    "replyTo": "ifc-data-bus/reply/SystemA/change-001",
+    "ttl": 3600
+  },
+  
+  "security": {
+    "authScheme": "Bearer",
+    "tokenHash": "sha256:a7b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2",
+    "permissions": ["write:model"],
+    "issuedAt": "2025-11-21T10:00:00Z",
+    "expiresAt": "2025-11-21T12:00:00Z"
+  },
+  
+  "tracing": {
+    "traceId": "4bf92f3577b34da6a3ce929d0e0e4736",
+    "spanId": "00f067aa0ba902b7",
+    "parentSpanId": "00f067aa0ba902b6"
+  },
+  
+  "temporal": {
+    "expiresAt": "2025-11-21T11:00:00Z",
+    "maxProcessingDelay": 300
+  },
+  
+  "modelRef": {
+    "ifcSchema": "IFC5",
+    "modelId": "bim-project-123",
+    "revision": 2,
+    "baseRevision": 1,
+    "hash": {
+      "algorithm": "sha256",
+      "value": "d2f8a3b1c9e4d5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0",
+      "encoding": "hex"
+    }
+  },
+  
+  "payload": {
+    "changeDescription": "Fenster in Fassade Süd angepasst",
+    "operations": [
+      {
+        "op": "update",
+        "path": "3v12fRbTX0hQxL6jLSEJxB",
+        "pathType": "IFC_GUID",
+        "entityType": "IfcWindow",
+        "changedProperties": {
+          "OverallHeight": { "old": 1.20, "new": 1.35, "unit": "m" },
+          "OverallWidth": { "old": 0.90, "new": 1.00, "unit": "m" }
+        }
+      },
+      {
+        "op": "add",
+        "path": "2Sr7Omf9PDSO3ApyXTfN5E",
+        "pathType": "IFC_GUID",
+        "entityType": "IfcWindow",
+        "entityData": {
+          "PredefinedType": "WINDOW",
+          "OverallHeight": 1.35,
+          "OverallWidth": 1.00
+        }
+      },
+      {
+        "op": "delete",
+        "path": "0zjkXZJ2HASRjAzAjathdh",
+        "pathType": "IFC_GUID",
+        "entityType": "IfcWindow",
+        "reason": "Removed during redesign"
+      }
+    ]
+  }
+}
+

@@ -1,0 +1,385 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ifc-data-bus.org/schemas/v2.0/message-envelope.json",
+  "title": "IFC Data Bus Message Envelope v2.0",
+  "description": "Base schema for all IFC Data Bus messages",
+  "type": "object",
+  "required": [
+    "messageSchemaVersion",
+    "ifcDataBusVersion",
+    "messageType",
+    "messageId",
+    "correlationId",
+    "idempotencyKey",
+    "timestamp",
+    "sender",
+    "payload"
+  ],
+  "properties": {
+    "messageSchemaVersion": {
+      "type": "string",
+      "description": "Version of the message schema format",
+      "pattern": "^[0-9]+\\.[0-9]+$",
+      "examples": ["2.0", "1.0"]
+    },
+    "ifcDataBusVersion": {
+      "type": "string",
+      "description": "Version of the IFC Data Bus specification",
+      "pattern": "^[0-9]+\\.[0-9]+$",
+      "examples": ["0.2", "0.1"]
+    },
+    "messageType": {
+      "type": "string",
+      "description": "Type of message following dot-notation convention",
+      "pattern": "^[A-Za-z0-9_]+(\\.[A-Za-z0-9_]+)*$",
+      "examples": [
+        "Model.Publish",
+        "Model.Change",
+        "Model.Query",
+        "de.din.DIN_EN15978_2012_10.Command.CalculateBuildingLca",
+        "System.Acknowledgment"
+      ]
+    },
+    "messageId": {
+      "type": "string",
+      "description": "Globally unique message identifier",
+      "minLength": 10,
+      "maxLength": 100,
+      "examples": ["msg-20251121-103000-abc123"]
+    },
+    "correlationId": {
+      "type": "string",
+      "description": "ID to correlate related messages (requests and responses)",
+      "minLength": 1,
+      "maxLength": 100,
+      "examples": ["LCA-2025-001", "query-model-001"]
+    },
+    "idempotencyKey": {
+      "type": "string",
+      "description": "Unique key to prevent duplicate processing",
+      "minLength": 10,
+      "maxLength": 200,
+      "examples": ["cmd-lca-2025-001-systemd-20251121-103000"]
+    },
+    "sequenceNumber": {
+      "type": "integer",
+      "description": "Monotonically increasing sequence number per model/stream",
+      "minimum": 1,
+      "examples": [1, 2, 50, 101]
+    },
+    "previousSequenceNumber": {
+      "type": ["integer", "null"],
+      "description": "Previous sequence number for validation (null for first message)",
+      "minimum": 1,
+      "examples": [1, 49, 100, null]
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp when message was created",
+      "examples": ["2025-11-21T10:30:00Z"]
+    },
+    "priority": {
+      "type": "integer",
+      "description": "Message priority (0=lowest, 9=highest)",
+      "minimum": 0,
+      "maximum": 9,
+      "default": 5,
+      "examples": [0, 5, 7, 9]
+    },
+    "sender": {
+      "type": "object",
+      "description": "Information about the system sending the message",
+      "required": ["systemId", "systemType"],
+      "properties": {
+        "systemId": {
+          "type": "string",
+          "description": "Unique identifier of the sending system",
+          "minLength": 1,
+          "examples": ["SystemA", "SystemB", "lca-service-01"]
+        },
+        "systemType": {
+          "type": "string",
+          "description": "Type/role of the sending system",
+          "minLength": 1,
+          "examples": ["AuthoringTool", "LCAService", "SustainabilityDashboard"]
+        },
+        "userId": {
+          "type": "string",
+          "description": "User who triggered the action (if applicable)",
+          "format": "email",
+          "examples": ["author@example.com"]
+        },
+        "version": {
+          "type": "string",
+          "description": "Version of the sending system",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+          "examples": ["1.2.3", "2.0.0"]
+        }
+      }
+    },
+    "routing": {
+      "type": "object",
+      "description": "MQTT routing and TTL information",
+      "required": ["publishedOn"],
+      "properties": {
+        "publishedOn": {
+          "type": "string",
+          "description": "MQTT topic where message is published",
+          "pattern": "^[^#+\\s]+$",
+          "examples": ["ifc-data-bus/model/bim-project-123/change"]
+        },
+        "replyTo": {
+          "type": ["string", "null"],
+          "description": "MQTT topic for replies (null if no reply expected)",
+          "pattern": "^[^#+\\s]+$",
+          "examples": ["ifc-data-bus/reply/SystemA/change-001", null]
+        },
+        "ttl": {
+          "type": "integer",
+          "description": "Time-to-live in seconds",
+          "minimum": 1,
+          "maximum": 86400,
+          "examples": [60, 300, 3600]
+        }
+      }
+    },
+    "security": {
+      "type": "object",
+      "description": "Security and authentication information",
+      "required": ["tokenHash", "permissions"],
+      "properties": {
+        "authScheme": {
+          "type": "string",
+          "description": "Authentication scheme",
+          "enum": ["Bearer", "Basic", "ApiKey"],
+          "default": "Bearer"
+        },
+        "tokenHash": {
+          "type": "string",
+          "description": "Hash of authentication token",
+          "pattern": "^(sha256|sha512):[a-f0-9]{64,128}$",
+          "examples": ["sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"]
+        },
+        "permissions": {
+          "type": "array",
+          "description": "List of permissions for this operation",
+          "items": {
+            "type": "string",
+            "pattern": "^(read|write|delete):(model|lca|query|command)$"
+          },
+          "minItems": 1,
+          "examples": [["read:model", "write:lca"]]
+        },
+        "issuedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the token was issued"
+        },
+        "expiresAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the token expires"
+        }
+      }
+    },
+    "tracing": {
+      "type": "object",
+      "description": "OpenTelemetry distributed tracing information",
+      "required": ["traceId", "spanId"],
+      "properties": {
+        "traceId": {
+          "type": "string",
+          "description": "OpenTelemetry trace ID (32 hex characters)",
+          "pattern": "^[a-f0-9]{32}$",
+          "examples": ["4bf92f3577b34da6a3ce929d0e0e4736"]
+        },
+        "spanId": {
+          "type": "string",
+          "description": "OpenTelemetry span ID (16 hex characters)",
+          "pattern": "^[a-f0-9]{16}$",
+          "examples": ["00f067aa0ba902b7"]
+        },
+        "parentSpanId": {
+          "type": ["string", "null"],
+          "description": "Parent span ID (null for root span)",
+          "pattern": "^[a-f0-9]{16}$",
+          "examples": ["00f067aa0ba902b6", null]
+        },
+        "traceFlags": {
+          "type": "string",
+          "description": "OpenTelemetry trace flags",
+          "pattern": "^[0-9]{2}$",
+          "default": "01",
+          "examples": ["01"]
+        }
+      }
+    },
+    "temporal": {
+      "type": "object",
+      "description": "Temporal constraints for message processing",
+      "properties": {
+        "expiresAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When this message expires and should not be processed"
+        },
+        "notBefore": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Do not process before this time"
+        },
+        "responseTimeout": {
+          "type": "integer",
+          "description": "How long to wait for response (seconds)",
+          "minimum": 1,
+          "maximum": 3600,
+          "examples": [30, 300, 900]
+        },
+        "maxProcessingDelay": {
+          "type": "integer",
+          "description": "Maximum acceptable processing delay (seconds)",
+          "minimum": 1,
+          "maximum": 3600,
+          "examples": [120, 300]
+        }
+      }
+    },
+    "modelRef": {
+      "type": "object",
+      "description": "Reference to IFC model",
+      "required": ["ifcSchema", "modelId"],
+      "properties": {
+        "ifcSchema": {
+          "type": "string",
+          "description": "IFC schema version",
+          "enum": ["IFC2X3", "IFC4", "IFC4.3", "IFC5"],
+          "examples": ["IFC5"]
+        },
+        "modelId": {
+          "type": "string",
+          "description": "Unique identifier of the model",
+          "minLength": 1,
+          "examples": ["bim-project-123"]
+        },
+        "revision": {
+          "type": "integer",
+          "description": "Model revision number",
+          "minimum": 1,
+          "examples": [1, 2, 10]
+        },
+        "baseRevision": {
+          "type": "integer",
+          "description": "Base revision for changes",
+          "minimum": 1,
+          "examples": [1, 9]
+        },
+        "hash": {
+          "type": "object",
+          "description": "Cryptographic hash of model content",
+          "required": ["algorithm", "value", "encoding"],
+          "properties": {
+            "algorithm": {
+              "type": "string",
+              "enum": ["sha256", "sha512"],
+              "examples": ["sha256"]
+            },
+            "value": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64,128}$",
+              "examples": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"]
+            },
+            "encoding": {
+              "type": "string",
+              "enum": ["hex", "base64"],
+              "examples": ["hex"]
+            }
+          }
+        },
+        "storage": {
+          "type": "object",
+          "description": "Storage location of model file",
+          "required": ["kind", "location"],
+          "properties": {
+            "kind": {
+              "type": "string",
+              "enum": ["ifcx", "ifc", "ifczip", "url"],
+              "examples": ["ifcx"]
+            },
+            "location": {
+              "type": "string",
+              "format": "uri",
+              "examples": ["https://bim.example.com/models/bim-project-123/r1.ifcx"]
+            }
+          }
+        }
+      }
+    },
+    "respondsTo": {
+      "type": "object",
+      "description": "Reference to message this is responding to",
+      "required": ["systemId", "correlationId"],
+      "properties": {
+        "systemId": {
+          "type": "string",
+          "description": "System that sent the original message"
+        },
+        "systemType": {
+          "type": "string",
+          "description": "Type of system that sent original message"
+        },
+        "correlationId": {
+          "type": "string",
+          "description": "Correlation ID of original message"
+        },
+        "messageId": {
+          "type": "string",
+          "description": "Message ID of original message"
+        }
+      }
+    },
+    "acknowledges": {
+      "type": "object",
+      "description": "Reference to message being acknowledged",
+      "required": ["messageId", "messageType", "correlationId"],
+      "properties": {
+        "messageId": {
+          "type": "string",
+          "description": "ID of message being acknowledged"
+        },
+        "messageType": {
+          "type": "string",
+          "description": "Type of message being acknowledged"
+        },
+        "correlationId": {
+          "type": "string",
+          "description": "Correlation ID of acknowledged message"
+        },
+        "sequenceNumber": {
+          "type": "integer",
+          "description": "Sequence number of acknowledged message"
+        },
+        "systemId": {
+          "type": "string",
+          "description": "System that sent the acknowledged message"
+        }
+      }
+    },
+    "payload": {
+      "type": "object",
+      "description": "Message-specific payload (structure depends on messageType)"
+    }
+  },
+  "if": {
+    "properties": {
+      "sequenceNumber": {
+        "type": "integer"
+      }
+    },
+    "required": ["sequenceNumber"]
+  },
+  "then": {
+    "required": ["previousSequenceNumber"]
+  }
+}
+

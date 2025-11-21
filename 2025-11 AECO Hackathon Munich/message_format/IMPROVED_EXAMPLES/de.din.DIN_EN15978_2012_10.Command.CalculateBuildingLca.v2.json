@@ -1,36 +1,66 @@
 {
+  "messageSchemaVersion": "2.0",
   "ifcDataBusVersion": "0.2",
+  
   "messageType": "de.din.DIN_EN15978_2012_10.Command.CalculateBuildingLca",
+  "messageId": "msg-20251121-103000-def456",
   "correlationId": "LCA-2025-001",
   "idempotencyKey": "cmd-lca-2025-001-systemd-20251121-103000",
+  
+  "sequenceNumber": 50,
+  "previousSequenceNumber": 49,
+  
   "timestamp": "2025-11-21T10:30:00Z",
-
+  "priority": 7,
+  
   "sender": {
     "systemId": "SystemD",
     "systemType": "SustainabilityDashboard",
-    "userId": "sustainability.expert@example.com"
+    "userId": "sustainability.expert@example.com",
+    "version": "2.1.0"
   },
-
+  
+  "routing": {
+    "publishedOn": "ifc-data-bus/command/lca/calculate",
+    "replyTo": "ifc-data-bus/reply/SystemD/LCA-2025-001",
+    "ttl": 600
+  },
+  
   "security": {
-    "tokenHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "permissions": ["read:model", "write:lca"]
+    "authScheme": "Bearer",
+    "tokenHash": "sha256:b8c3d4e5f6a7b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6",
+    "permissions": ["read:model", "write:lca"],
+    "issuedAt": "2025-11-21T10:29:00Z",
+    "expiresAt": "2025-11-21T11:29:00Z"
   },
-
+  
+  "tracing": {
+    "traceId": "7ad8e9f0a1b2c3d4e5f6a7b8c9d0e1f2",
+    "spanId": "a1b2c3d4e5f6a7b8",
+    "parentSpanId": "00f067aa0ba902b6"
+  },
+  
+  "temporal": {
+    "expiresAt": "2025-11-21T11:30:00Z",
+    "responseTimeout": 900,
+    "maxProcessingDelay": 120
+  },
+  
   "modelRef": {
     "ifcSchema": "IFC5",
     "modelId": "bim-project-123",
     "revision": 2,
     "hash": {
       "algorithm": "sha256",
-      "value": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "value": "d2f8a3b1c9e4d5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0",
       "encoding": "hex"
     }
   },
-
+  
   "payload": {
     "analysisId": "LCA-Building-001",
     "standard": "DIN EN 15978:2012-10",
-
+    
     "scope": {
       "systemBoundary": "cradle-to-grave",
       "lifeCycleModules": ["A1-A3", "A4", "A5", "B4", "C3", "C4"],
@@ -41,7 +71,7 @@
         "description": "1 m² Bruttogeschossfläche über 50 Jahre"
       }
     },
-
+    
     "modelSelection": {
       "include": [
         { "byEntityType": ["IfcWall", "IfcSlab", "IfcWindow", "IfcDoor"] }
@@ -56,16 +86,17 @@
         }
       ]
     },
-
+    
     "resultDetail": {
       "aggregationLevel": ["PerBuilding", "PerStorey", "PerElement"],
       "groupBy": ["IfcEntityType", "Material", "Zone"],
       "returnUnit": "kgCO2e"
     },
-
+    
     "constraints": {
       "requiredStandard": "DIN EN 15978:2012-10",
       "rejectIfDifferentStandard": true
     }
   }
 }
+
