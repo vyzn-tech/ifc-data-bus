@@ -7,7 +7,7 @@
   "sender": {
     "systemId": "SystemA",
     "systemType": "AuthoringTool",
-    "userId": "alice@example.com"
+    "userId": "author@example.com"
   },
 
   "modelRef": {
@@ -22,7 +22,7 @@
   },
 
   "payload": {
-    "description": "Initiales Modell für Projekt X",
+    "description": "Initial model for project X",
     "projectMeta": {
       "projectName": "Wohnhaus Zürich",
       "client": "Muster AG"

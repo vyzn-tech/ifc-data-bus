@@ -1,12 +1,18 @@
 {
   "ifcMessageVersion": "0.1",
-  "messageType": "EN-15978:2012-10.Request",
-  "correlationId": "LCA-request-001",
+  "messageType": "DIN-EN-15978:2012-10.CalculateBuildingLca.Command",
+  "correlationId": "LCA-2025-001",
   "timestamp": "2025-11-21T10:30:00Z",
 
   "sender": {
+    "systemId": "SystemD",
+    "systemType": "SustainabilityDashboard",
+    "userId": "sustainability.expert@example.com"
+  },
+
+  "target": {
     "systemId": "SystemB",
-    "systemType": "CoordinationPlatform"
+    "systemType": "LCAService"
   },
 
   "modelRef": {
@@ -18,11 +24,9 @@
 
   "payload": {
     "analysisId": "LCA-Building-001",
-    "analysisType": "LCA",
-    "requestedBy": "bob@example.com",
+    "standard": "DIN EN 15978:2012-10",
 
     "scope": {
-      "standard": "DIN EN 15978:2012-10",
       "systemBoundary": "cradle-to-grave",
       "lifeCycleModules": ["A1-A3", "A4", "A5", "B4", "C3", "C4"],
       "referenceStudyPeriodYears": 50,
@@ -46,12 +50,6 @@
           }
         }
       ]
-    },
-
-    "lciaMethod": {
-      "standard": "DIN EN 15978:2012-10",
-      "dataSource": "ecoinvent-3.9.1",
-      "impactCategories": ["GWP_total", "ODP", "AP", "EP", "POCP"]
     },
 
     "resultDetail": {

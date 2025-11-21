@@ -1,11 +1,11 @@
 {
   "ifcMessageVersion": "0.1",
-  "messageType": "EN-15978:2012-10",
-  "correlationId": "LCA-request-001",
+  "messageType": "DIN-EN-15978:2012-10.BuildingLcaCalculated.Event",
+  "correlationId": "LCA-2025-001",
   "timestamp": "2025-11-21T10:45:00Z",
 
   "sender": {
-    "systemId": "SystemC",
+    "systemId": "SystemB",
     "systemType": "LCAService"
   },
 
@@ -19,15 +19,12 @@
   "payload": {
     "analysisId": "LCA-Building-001",
     "status": "completed",
+    "standard": "DIN EN 15978:2012-10",
 
     "calculationMeta": {
       "startedAt": "2025-11-21T10:30:05Z",
       "finishedAt": "2025-11-21T10:44:30Z",
-      "lciaMethod": {
-        "standard": "DIN EN 15978:2012-10",
-        "dataSource": "ecoinvent-3.9.1",
-        "version": "1.0"
-      },
+      "dataSource": "ecoinvent-3.9.1",
       "software": {
         "name": "ExampleLCAEngine",
         "version": "2.3.1"
